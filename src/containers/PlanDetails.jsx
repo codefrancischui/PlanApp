@@ -1,5 +1,7 @@
 import React from 'react';
-// import Button from '@material-ui/core/Button';
+import PlanInput from '../components/PlanInput';
+import PlanTable from '../components/PlanTable';
+import {Grid} from '@material-ui/core';
 
 class PlanDetails extends React.Component {
 	constructor(props) {
@@ -29,25 +31,25 @@ class PlanDetails extends React.Component {
 			jsonInput: defaultJsonInput,
 			data: [],
 		};
-	}
+	};
 
-	handleSubmit()
-	{
-		console.log("handleSubmit called.");
-	}
-	
+	receiveChildValue = (value) => {
+    console.log("Parent received value from child: " + JSON.stringify(value)); // value is 42
+		this.setState({jsonInput: value});
+	};
+
 	render() {
 		return (
-			<section>
-				<form onSubmit={this.handleSubmit}>
-				
-				<text>Input</text>
-				<textarea value={JSON.stringify(this.state.jsonInput)}  defaultValue="" />
-				{/* <textarea value={this.state.jsonInput.map(e=>JSON.stringify(e))}  defaultValue="val" /> */}
-				{/* <Button variant="outlined">Submit</Button> */}
-				<button>Submit</button>
-				</form>
-			</section>
+			<div>
+				<Grid container>
+					<Grid item xs={6}>
+						<PlanInput plans={this.state.jsonInput} callback={this.receiveChildValue} />
+					</Grid>
+					<Grid item xs={6}>
+						<PlanTable plans={this.state.jsonInput} />
+					</Grid>
+				</Grid>
+			</div>
 		);
 	}
 }

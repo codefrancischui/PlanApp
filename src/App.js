@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import PlanInput from './containers/PlanInput';
+import PlanDetails from './containers/PlanDetails';
 
 function App() {
   return (
-    <PlanInput />
+    <PlanDetails />
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
